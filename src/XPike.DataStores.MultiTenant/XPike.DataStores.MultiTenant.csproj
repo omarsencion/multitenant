@@ -1,11 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
+  <Import Project="../common.build.props" />
+
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>netstandard2.0;net452</TargetFrameworks>
+    <PackageTags>xPike;microservices;multitenant;datastores</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="XPike.DataStores" Version="1.0.0" />
+    <PackageReference Include="XPike.DataStores" Version="1.0.1" />
   </ItemGroup>
 
   <ItemGroup>
