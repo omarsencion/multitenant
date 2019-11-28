@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;net452</TargetFrameworks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="XPike.IoC" Version="1.0.3" />
+    <PackageReference Include="XPike.Logging" Version="1.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="XPike.IoC">
+      <HintPath>..\XPike.Playground.Owin.SimpleInjector\Bin\XPike.IoC.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <!-- .NET Standard 2.0 references, compilation flags and build options -->
+  <PropertyGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+    <DefineConstants>NETSTD</DefineConstants>
+  </PropertyGroup>
+
+
+  <!-- .NET 4.5 references, compilation flags and build options -->
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net452'">
+    <DefineConstants>NETFX</DefineConstants>
+  </PropertyGroup>
+</Project>

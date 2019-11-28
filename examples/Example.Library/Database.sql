@@ -1,0 +1,29 @@
+﻿CREATE DATABASE users;
+
+USE users;
+
+CREATE TABLE users.userInfo (
+	Id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	`Name` NVARCHAR(100) NOT NULL,
+	Credits DECIMAL(19, 2) NOT NULL DEFAULT 0,
+	`Enabled` TINYINT(1) NOT NULL DEFAULT 1,
+	UserTypeId INT NOT NULL,
+	Expires DATETIME NULL DEFAULT NULL,
+	Created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	UserLevel INT NOT NULL
+);
+
+CREATE INDEX IX_UserInfo_Name ON users.userInfo(`Name`);
+
+CREATE DATABASE contacts;
+
+USE contacts;
+
+CREATE TABLE contacts.contactInfo (
+	ContactId INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	UserId INT NOT NULL,
+	EmailAddress NVARCHAR(100),
+	PhoneNumber NVARCHAR(20)
+);
+
+CREATE UNIQUE INDEX IX_ContactInfo_UserId ON contacts.contactInfo(UserId);

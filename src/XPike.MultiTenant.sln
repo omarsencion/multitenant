@@ -1,0 +1,88 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29418.71
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XPike.MultiTenant", "XPike.MultiTenant\XPike.MultiTenant.csproj", "{C9E3BE97-909F-4811-96E7-7572DA2F63E4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{1B79342E-2B60-4735-86C0-2740F0CCDE50}"
+	ProjectSection(SolutionItems) = preProject
+		..\.editorconfig = ..\.editorconfig
+		..\.gitignore = ..\.gitignore
+		..\azure-pipelines.yml = ..\azure-pipelines.yml
+		common.build.props = common.build.props
+		..\xpike-pacakge-icon.png = ..\xpike-pacakge-icon.png
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "README", "README", "{880E52BD-71AA-44F2-8392-F4D088F1F1B4}"
+	ProjectSection(SolutionItems) = preProject
+		..\CHANGELOG.md = ..\CHANGELOG.md
+		..\LICENSE = ..\LICENSE
+		..\README.md = ..\README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{D864F911-BD77-42ED-B095-E18A6804710A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{F3F147A2-728D-4D72-93DB-0E851EA8168C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "examples", "examples", "{BD6EEA84-6089-452F-BEF4-A14CBB0F974E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "netcore3", "netcore3", "{B5E008F7-2535-47DC-990D-1C27ECF25851}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XPike.DataStores.MultiTenant", "XPike.DataStores.MultiTenant\XPike.DataStores.MultiTenant.csproj", "{BA383AF9-F1EF-4FDB-B569-F5A73651BA54}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XPike.MultiTenant.RequestContext", "XPike.MultiTenant.RequestContext\XPike.MultiTenant.RequestContext.csproj", "{F20DA0C7-9813-49D3-B6FD-DC09DA6A8172}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XPike.MultiTenant.UnitTests", "..\tests\XPike.MultiTenant.UnitTests\XPike.MultiTenant.UnitTests.csproj", "{44479D8A-3993-4498-BF18-3C81DEABFDBF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Example.Library", "..\examples\Example.Library\Example.Library.csproj", "{A94488DA-6A6A-4BE9-B818-2A612FA2B986}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XPikeMultiTenant", "..\examples\netcore3\XPikeMultiTenant\XPikeMultiTenant.csproj", "{268CBBC9-C2F6-488A-87C6-29E76EC2BFE1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C9E3BE97-909F-4811-96E7-7572DA2F63E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9E3BE97-909F-4811-96E7-7572DA2F63E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9E3BE97-909F-4811-96E7-7572DA2F63E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9E3BE97-909F-4811-96E7-7572DA2F63E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA383AF9-F1EF-4FDB-B569-F5A73651BA54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA383AF9-F1EF-4FDB-B569-F5A73651BA54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA383AF9-F1EF-4FDB-B569-F5A73651BA54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA383AF9-F1EF-4FDB-B569-F5A73651BA54}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F20DA0C7-9813-49D3-B6FD-DC09DA6A8172}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F20DA0C7-9813-49D3-B6FD-DC09DA6A8172}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F20DA0C7-9813-49D3-B6FD-DC09DA6A8172}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F20DA0C7-9813-49D3-B6FD-DC09DA6A8172}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44479D8A-3993-4498-BF18-3C81DEABFDBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44479D8A-3993-4498-BF18-3C81DEABFDBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44479D8A-3993-4498-BF18-3C81DEABFDBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44479D8A-3993-4498-BF18-3C81DEABFDBF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A94488DA-6A6A-4BE9-B818-2A612FA2B986}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A94488DA-6A6A-4BE9-B818-2A612FA2B986}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A94488DA-6A6A-4BE9-B818-2A612FA2B986}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A94488DA-6A6A-4BE9-B818-2A612FA2B986}.Release|Any CPU.Build.0 = Release|Any CPU
+		{268CBBC9-C2F6-488A-87C6-29E76EC2BFE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{268CBBC9-C2F6-488A-87C6-29E76EC2BFE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{268CBBC9-C2F6-488A-87C6-29E76EC2BFE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{268CBBC9-C2F6-488A-87C6-29E76EC2BFE1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C9E3BE97-909F-4811-96E7-7572DA2F63E4} = {F3F147A2-728D-4D72-93DB-0E851EA8168C}
+		{B5E008F7-2535-47DC-990D-1C27ECF25851} = {BD6EEA84-6089-452F-BEF4-A14CBB0F974E}
+		{BA383AF9-F1EF-4FDB-B569-F5A73651BA54} = {F3F147A2-728D-4D72-93DB-0E851EA8168C}
+		{F20DA0C7-9813-49D3-B6FD-DC09DA6A8172} = {F3F147A2-728D-4D72-93DB-0E851EA8168C}
+		{44479D8A-3993-4498-BF18-3C81DEABFDBF} = {D864F911-BD77-42ED-B095-E18A6804710A}
+		{A94488DA-6A6A-4BE9-B818-2A612FA2B986} = {BD6EEA84-6089-452F-BEF4-A14CBB0F974E}
+		{268CBBC9-C2F6-488A-87C6-29E76EC2BFE1} = {B5E008F7-2535-47DC-990D-1C27ECF25851}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D3AA351A-384E-4926-91BE-9B2F6A936A92}
+	EndGlobalSection
+EndGlobal
