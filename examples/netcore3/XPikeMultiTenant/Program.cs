@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using XPike.Configuration.Microsoft.AspNetCore;
 using XPike.Logging.Microsoft.AspNetCore;
 
-namespace XPikeDataStores
+namespace XPikeMultiTenant
 {
     public class Program
     {
@@ -15,7 +15,7 @@ namespace XPikeDataStores
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .ConfigureLogging(builder => { builder.UseXPikeLogging(); })
-                .AddXPikeConfiguration(config => { })
-                .UseStartup<Startup>();
+                .UseStartup<Startup>()
+                .AddXPikeConfiguration(config => { });
     }
 }

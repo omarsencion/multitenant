@@ -51,5 +51,13 @@ namespace Example.Library.Models
         [DataMember]
         [ProtoMember(9)]
         public ContactInfo ContactInfo { get; set; }
+
+        [DataMember]
+        [ProtoMember(10)]
+        public string DisplayMessage1 { get; set; }
+
+        [DataMember]
+        [ProtoMember(11)]
+        public string DisplayMessage2 { get; set; }
     }
 }

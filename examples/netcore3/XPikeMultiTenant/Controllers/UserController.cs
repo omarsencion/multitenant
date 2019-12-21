@@ -1,13 +1,16 @@
 ﻿using System.Diagnostics;
 using System.Net;
 using System.Threading.Tasks;
+using Example.Library;
 using Example.Library.DataStores;
 using Example.Library.DataStores.EntityFramework;
 using Example.Library.Models;
 using Microsoft.AspNetCore.Mvc;
+using XPike.Configuration;
 using XPike.Logging;
+using XPike.Settings;
 
-namespace XPikeDataStores.Controllers
+namespace XPikeMultiTenant.Controllers
 {
     [Route("user")]
     [ApiController]
@@ -17,14 +20,17 @@ namespace XPikeDataStores.Controllers
         private readonly ILog<UserController> _logger;
         private readonly IExampleDataStore _exampleDataStore;
         private readonly IEntityFrameworkExampleDataStore _entityFramework;
+        private readonly IConfig<TenantSpecificSettings> _settings;
 
         public UserController(ILog<UserController> logger,
             IExampleDataStore exampleDataStore,
-            IEntityFrameworkExampleDataStore entityFramework)
+            IEntityFrameworkExampleDataStore entityFramework,
+            IConfig<TenantSpecificSettings> settings)
         {
             _logger = logger;
             _exampleDataStore = exampleDataStore;
             _entityFramework = entityFramework;
+            _settings = settings;
         }
 
         [HttpGet("ef/{userId}")]
@@ -32,6 +38,14 @@ namespace XPikeDataStores.Controllers
         public async Task<IActionResult> EfGetUserAsync([FromRoute] int userId)
         {
             var user = await _entityFramework.GetExampleAsync(userId);
+            if (user != null)
+            {
+                var settings = _settings.CurrentValue;
+                
+                user.DisplayMessage1 = settings.DisplayMessage1;
+                user.DisplayMessage2 = settings.DisplayMessage2;
+            }
+
             return user == null ? (IActionResult) NotFound() : Ok(user);
         }
 
@@ -63,6 +77,14 @@ namespace XPikeDataStores.Controllers
         public async Task<IActionResult> GetUserAsync([FromRoute] int userId)
         {
             var user = await _exampleDataStore.GetExampleAsync(userId);
+            if (user != null)
+            {
+                var settings = _settings.GetLatestValue();
+
+                user.DisplayMessage1 = settings.DisplayMessage1;
+                user.DisplayMessage2 = settings.DisplayMessage2;
+            }
+
             return user == null ? (IActionResult) NotFound() : Ok(user);
         }
 

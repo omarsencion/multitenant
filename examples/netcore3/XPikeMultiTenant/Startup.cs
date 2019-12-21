@@ -1,18 +1,20 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Example.Library;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using XPike.IoC.Microsoft.AspNetCore;
-//using XPike.IoC.SimpleInjector.AspNetCore;
-using Example.Library;
 using Microsoft.Extensions.Hosting;
+using XPike.Configuration;
+using XPike.Configuration.MultiTenant;
+using XPike.IoC.Microsoft.AspNetCore;
 using XPike.Logging.Microsoft.AspNetCore;
 using XPike.RequestContext.Http.AspNetCore;
-using XPikeMultiTenant;
+using XPike.Settings.AspNetCore;
 
-namespace XPikeDataStores
+//using XPike.IoC.SimpleInjector.AspNetCore;
+
+namespace XPikeMultiTenant
 {
     public class Startup
     {
@@ -33,13 +35,18 @@ namespace XPikeDataStores
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            var value = Configuration["XPike:DataStores:MultiTenant:ConnectionConfig"];
+
+            services.AddMvc(options => options.EnableEndpointRouting = false);
 
             services //.AddXPikeSettings()
                 .AddXPikeLogging()
+                .AddXPikeSettings()
                 .AddXPikeExampleDbContexts()
                 .AddXPikeHttpRequestContext()
                 .AddXPikeDependencyInjection()
-                .AddXPikeMultiTenantExample();
+                .AddXPikeMultiTenantExample()
+                .AddXPikeMultiTenantConfiguration();
             //                .RegisterSingleton(typeof(ISettings<>), typeof(SettingsLoader<>));
 
         }
@@ -47,9 +54,13 @@ namespace XPikeDataStores
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app.UseXPikeDependencyInjection()
-                .UseXPikeLogging();
+            var provider = app.UseXPikeDependencyInjection()
+                .UseXPikeLogging()
+                .UseXPikeMultiTenantConfiguration();
 
+            var config = provider.ResolveDependency<IConfigurationService>();
+            var value = config.GetValue("XPike.DataStores.MultiTenant.ConnectionConfig");
+            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -60,6 +71,8 @@ namespace XPikeDataStores
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            app.UseMvc();
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
